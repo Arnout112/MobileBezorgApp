@@ -54,7 +54,11 @@ namespace MobileBezorgApp
             {
                 await DisplayAlert("Fout", $"Type: {ex.GetType().Name}\nMessage: {ex.Message}\nStackTrace: {ex.StackTrace}", "OK");
             }
+        }
 
+        private async void OnStartScannerClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new QrScannerPage());
         }
     }
 

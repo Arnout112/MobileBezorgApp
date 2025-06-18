@@ -19,7 +19,7 @@ namespace MobileBezorgApp
                 }
             });
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new MainPage());
         }
     }
 }
