@@ -1,25 +1,28 @@
-﻿namespace MobileBezorgApp
+﻿
+using Microsoft.Maui.Controls;
+
+namespace MobileBezorgApp
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void LoginButton_Clicked(object sender, EventArgs e)
         {
-            count++;
+            await Navigation.PushAsync(new UitloggenPage());
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
+            if (string.IsNullOrWhiteSpace(RitnummerEntry.Text))
+            {
+                ValidationLabel.Text = "Ritnummer is verplicht.";
+                ValidationLabel.IsVisible = true;
+            }
             else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            {
+                ValidationLabel.IsVisible = false;
+            }
         }
     }
-
 }
