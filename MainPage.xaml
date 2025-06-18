@@ -37,5 +37,8 @@
             Text="Doe API Call"
             Clicked="OnApiCallClicked"
             HorizontalOptions="Fill" />
+
+        <Button Text="Start QR-code scanner" Clicked="OnStartScannerClicked" />
+        
     </VerticalStackLayout>
 </ContentPage>
