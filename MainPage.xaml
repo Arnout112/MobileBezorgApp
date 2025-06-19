@@ -1,44 +1,45 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileBezorgApp.MainPage">
+             x:Class="MobileBezorgApp.MainPage"
+             BackgroundColor="#FFF">
 
-    <VerticalStackLayout 
-        Padding="30"
-        Spacing="25"
-        VerticalOptions="Center">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,40"
+            Spacing="30"
+            VerticalOptions="Center">
 
-        <Image
-            Source="dotnet_bot.png"
-            HeightRequest="185"
-            Aspect="AspectFit"
-            SemanticProperties.Description="dot net bot in a race car number eight" />
+            <Label Text="Goedemorgen!"
+                   FontSize="28"
+                   TextColor="#1C68FF"
+                   HorizontalOptions="Center"
+                   HeightRequest="250"/>
 
-        <Label
-            Text="Hello, World!"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1" />
+            <Entry x:Name="RitnummerEntry"
+                   Placeholder="Voer je ritnummer in"
+                   BackgroundColor="#E3EFFF"
+                   TextColor="#222"
+                   FontSize="18"
+                   HeightRequest="48"
+                   Margin="0,5"
+                   Keyboard="Numeric" />
 
-        <Label
-            Text="Welcome to .NET Multi-platform App UI"
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+            <Button Text="Inloggen"
+                    x:Name="LoginButton"
+                    BackgroundColor="#1C68FF"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="48"
+                    Clicked="LoginButton_Clicked" />
 
-        <Button
-            x:Name="CounterBtn"
-            Text="Click me" 
-            SemanticProperties.Hint="Counts the number of times you click"
-            Clicked="OnCounterClicked"
-            HorizontalOptions="Fill" />
+            <Label x:Name="ValidationLabel"
+                   TextColor="Red"
+                   IsVisible="False"
+                   FontSize="14"
+                   HorizontalOptions="Center" />
 
-        <Button
-            x:Name="ApiCallBtn"
-            Text="Doe API Call"
-            Clicked="OnApiCallClicked"
-            HorizontalOptions="Fill" />
-
-        <Button Text="Start QR-code scanner" Clicked="OnStartScannerClicked" />
-        
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
