@@ -7,6 +7,11 @@ public partial class QrScannerPage : ContentPage
     public QrScannerPage()
     {
         InitializeComponent();
+
+        // DeliverImage tap gesture
+        var qrTap = new TapGestureRecognizer();
+        qrTap.Tapped += OnDeliverImageTapped;
+        DeliverImage.GestureRecognizers.Add(qrTap);
     }
 
     private void CameraBarcodeReaderView_BarcodesDetected(object sender, BarcodeDetectionEventArgs e)
@@ -31,9 +36,8 @@ public partial class QrScannerPage : ContentPage
         });
     }
 
-    private void OnStopScannerClicked(object sender, EventArgs e)
+    private async void OnDeliverImageTapped(object sender, EventArgs e)
     {
-        cameraBarcodeReaderView.IsDetecting = false;
-        Navigation.PopAsync();
+        await Navigation.PushAsync(new AddressInformationPage());
     }
 }

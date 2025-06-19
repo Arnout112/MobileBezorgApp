@@ -29,10 +29,15 @@
             VerticalOptions="Fill" />
 
         <!-- Bottom Navigation -->
-        <Grid Grid.Row="2" BackgroundColor="White" Padding="10" ColumnDefinitions="*,*,*">
-            <ImageButton Grid.Column="0" Source="navigatie_pictogram.png" BackgroundColor="Transparent" />
-            <ImageButton Grid.Column="1" Source="bezorg_pictogram.png" BackgroundColor="Transparent" />
-            <ImageButton Grid.Column="2" Source="qr_code_pictogram.png" BackgroundColor="Transparent" />
+        <Grid Grid.Row="3"
+              BackgroundColor="White"
+              Padding="20"
+              ColumnDefinitions="*, *, *"
+              VerticalOptions="End">
+
+            <Image Source="navigatie_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" />
+            <Image Grid.Column="1" Source="bezorg_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" x:Name="DeliverImage"/>
+            <Image Grid.Column="2" Source="qr_code_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" />
         </Grid>
 
     </Grid>
