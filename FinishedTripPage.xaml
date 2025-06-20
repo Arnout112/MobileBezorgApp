@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:Class="MobileBezorgApp.FinishedTripPage">
+    <Grid RowSpacing="0" ColumnSpacing="0" Padding="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Content -->
+            <RowDefinition Height="1" />
+            <!-- Divider -->
+            <RowDefinition Height="Auto" />
+            <!-- Bottom nav -->
+        </Grid.RowDefinitions>
+
+        <!-- Main Content -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="10" Spacing="25">
+                <Label Text="Finished Trip"  
+                       FontSize="28"  
+                       TextColor="#1C68FF"  
+                       HorizontalOptions="Center"  
+                       HeightRequest="250"/>
+                <Label Text="Adres: Werklaan 50, Breda, NB, 6010MG"  
+                       FontSize="18"  
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Text="Totale rittijd:04:38"  
+                       FontSize="18"  
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <HorizontalStackLayout Spacing="15" HorizontalOptions="Center" Margin="0,185,0,0">
+                    <Button
+                        Text="Rit Beëindigen"
+                        BackgroundColor="{StaticResource Rood}"
+                        TextColor="White"
+                        Clicked="OnLogoutClicked"
+                        WidthRequest="120"/>
+                    <Button
+                        Text="Navigatie"
+                        BackgroundColor="{StaticResource Blauw}"
+                        TextColor="White"
+                        WidthRequest="120"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Divider boven navbar -->
+        <BoxView Grid.Row="1"
+                 Color="LightGray"
+                 HeightRequest="1"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="End"/>
+
+        <!-- Bottom Navigation -->
+        <Grid Grid.Row="2"
+              BackgroundColor="White"
+              Padding="20,0"
+              ColumnDefinitions="*,*,*"
+              HeightRequest="60">
+            <Image Source="navigatie_pictogram.png" 
+                   WidthRequest="30" HeightRequest="30" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Image Grid.Column="1" Source="bezorg_pictogram.png" 
+                   WidthRequest="30" HeightRequest="30" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Image Grid.Column="2" Source="qr_code_pictogram.png" 
+                   WidthRequest="30" HeightRequest="30" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   x:Name="QrImage">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnQrCodeTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -11,7 +11,7 @@ public partial class UitloggenPage : ContentPage
 
     private async void OnAnnuleerClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new MainPage());
+        await Navigation.PushAsync(new FinishedTripPage());
     }
 
     private async void OnUitloggenClicked(object sender, EventArgs e)
