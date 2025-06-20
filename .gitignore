@@ -363,4 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # API key
-#/Platforms/Android/Resources/values/secrets.xml
+/Platforms/Android/Resources/values/secrets.xml
+/Platforms/Android/Resources/values/secrets.xml
