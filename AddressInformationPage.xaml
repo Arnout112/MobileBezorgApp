@@ -47,8 +47,6 @@
             <Label Text="Afleverinstructies: 3e Etage, geen lift" 
                    FontSize="18" Grid.Row="4" Grid.Column="0" />
 
-            <BoxView Grid.Row="5" Grid.Column="0" Color="Transparent" />
-
             <!-- Knoppen onderaan -->
             <Grid Grid.Row="6" Grid.Column="0" ColumnDefinitions="Auto, Auto" ColumnSpacing="50">
                 <Button Text="Niet thuis"
@@ -88,7 +86,8 @@
 
             <Image Source="navigatie_pictogram.png" 
                    WidthRequest="30" HeightRequest="30" 
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Center" 
+                   x:Name="NavigationButton" />
 
             <Image Grid.Column="1" Source="bezorg_pictogram.png" 
                    WidthRequest="30" HeightRequest="30" 
@@ -97,7 +96,7 @@
             <Image Grid.Column="2" Source="qr_code_pictogram.png" 
                    WidthRequest="30" HeightRequest="30" 
                    HorizontalOptions="Center" 
-                   x:Name="QrImage" />
+                   x:Name="QrButton" />
         </Grid>
 
     </Grid>

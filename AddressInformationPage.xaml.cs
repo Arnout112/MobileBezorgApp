@@ -14,7 +14,12 @@ namespace MobileBezorgApp
             // QR tap gesture
             var qrTap = new TapGestureRecognizer();
             qrTap.Tapped += OnQrCodeTapped;
-            QrImage.GestureRecognizers.Add(qrTap);
+            QrButton.GestureRecognizers.Add(qrTap);
+
+            // Navigation tap gesture
+            var naviTap = new TapGestureRecognizer();
+            naviTap.Tapped += OnNaviCodeTapped;
+            NavigationButton.GestureRecognizers.Add(naviTap);
         }
 
         private void OnPhoneTapped(object sender, EventArgs e)
@@ -36,7 +41,12 @@ namespace MobileBezorgApp
 
         private async void OnDeliveredButtonClicked(object sender, EventArgs e)
         { 
-            await Navigation.PushAsync(new FinishedTripPage()); 
+            await Navigation.PushAsync(new FinishedTripPage());
+        }
+        
+        private async void OnNaviCodeTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MapsPage());
         }
     }
 }
