@@ -47,8 +47,6 @@
             <Label Text="Afleverinstructies: 3e Etage, geen lift" 
                    FontSize="18" Grid.Row="4" Grid.Column="0" />
 
-            <BoxView Grid.Row="5" Grid.Column="0" Color="Transparent" />
-
             <!-- Knoppen onderaan -->
             <Grid Grid.Row="6" Grid.Column="0" ColumnDefinitions="Auto, Auto" ColumnSpacing="50">
                 <Button Text="Niet thuis"

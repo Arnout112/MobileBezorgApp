@@ -20,7 +20,10 @@ namespace MobileBezorgApp
             else
             {
                 ValidationLabel.IsVisible = false;
-                await Navigation.PushAsync(new TripInformationPage());
+
+                string ritnummer = RitnummerEntry.Text;
+
+                await Navigation.PushAsync(new TripInformationPage(ritnummer));
             }
         }
 
