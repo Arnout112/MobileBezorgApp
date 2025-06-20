@@ -85,7 +85,8 @@
 
             <Image Source="navigatie_pictogram.png" 
                    WidthRequest="30" HeightRequest="30" 
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Center" 
+                   x:Name="NavigationButton" />
 
             <Image Grid.Column="1" Source="bezorg_pictogram.png" 
                    WidthRequest="30" HeightRequest="30" 
@@ -94,7 +95,7 @@
             <Image Grid.Column="2" Source="qr_code_pictogram.png" 
                    WidthRequest="30" HeightRequest="30" 
                    HorizontalOptions="Center" 
-                   x:Name="QrImage" />
+                   x:Name="QrButton" />
         </Grid>
 
     </Grid>
