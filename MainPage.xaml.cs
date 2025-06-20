@@ -1,26 +1,27 @@
-﻿using MobileBezorgApp.Helpers;
+using Microsoft.Maui.Controls;
+using MobileBezorgApp.Helpers;
 
 namespace MobileBezorgApp
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void LoginButton_Clicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
+            if (string.IsNullOrWhiteSpace(RitnummerEntry.Text))
+            {
+                ValidationLabel.Text = "Ritnummer is verplicht.";
+                ValidationLabel.IsVisible = true;
+            }
             else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            {
+                ValidationLabel.IsVisible = false;
+                await Navigation.PushAsync(new TripInformationPage());
+            }
         }
 
         private async void OnApiCallClicked(object sender, EventArgs e)
@@ -61,5 +62,4 @@ namespace MobileBezorgApp
             await Navigation.PushAsync(new QrScannerPage());
         }
     }
-
 }
