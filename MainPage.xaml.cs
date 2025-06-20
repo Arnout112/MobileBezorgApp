@@ -12,8 +12,6 @@ namespace MobileBezorgApp
 
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UitloggenPage());
-
             if (string.IsNullOrWhiteSpace(RitnummerEntry.Text))
             {
                 ValidationLabel.Text = "Ritnummer is verplicht.";
@@ -22,6 +20,7 @@ namespace MobileBezorgApp
             else
             {
                 ValidationLabel.IsVisible = false;
+                await Navigation.PushAsync(new TripInformationPage());
             }
         }
 
