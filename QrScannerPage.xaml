@@ -35,7 +35,7 @@
               ColumnDefinitions="*, *, *"
               VerticalOptions="End">
 
-            <Image Source="navigatie_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" />
+            <Image Source="navigatie_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" x:Name="NavigationButton"/>
             <Image Grid.Column="1" Source="bezorg_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" x:Name="DeliverImage"/>
             <Image Grid.Column="2" Source="qr_code_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" />
         </Grid>
