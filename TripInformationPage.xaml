@@ -20,7 +20,7 @@
                               VerticalOptions="Center"
                               HorizontalOptions="Center"
                               Spacing="20">
-            <Label Text="Ritnummer: 135739" FontSize="18" />
+            <Label x:Name="RitnummerLabel" FontSize="18" />
             <Label Text="Aantal adressen: 50" FontSize="18" />
             <Label Text="Aantal pakketen: 73" FontSize="18" />
             <Label Text="Totale rit tijd: 05:00" FontSize="18" />
