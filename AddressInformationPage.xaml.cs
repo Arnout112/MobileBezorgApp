@@ -39,6 +39,11 @@ namespace MobileBezorgApp
             await Navigation.PushAsync(new QrScannerPage());
         }
 
+        private async void OnDeliveredButtonClicked(object sender, EventArgs e)
+        { 
+            await Navigation.PushAsync(new FinishedTripPage());
+        }
+        
         private async void OnNaviCodeTapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MapsPage());
