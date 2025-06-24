@@ -37,15 +37,3 @@ public partial class BottomNavigationBar : ContentView
         await Navigation.PushAsync(new AddressInformationPage());
     }
 }
-
-// Helper extension to find the parent page
-public static class VisualElementExtensions
-{
-    public static Page? GetParentPage(this VisualElement element)
-    {
-        Element? parent = element.Parent;
-        while (parent != null && parent is not Page)
-            parent = parent.Parent;
-        return parent as Page;
-    }
-}

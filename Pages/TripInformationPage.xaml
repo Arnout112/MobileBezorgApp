@@ -6,25 +6,18 @@
              BackgroundColor="White">
 
     <Grid RowDefinitions="Auto, *, Auto, Auto">
-
-        <!-- Header -->
         <Grid Padding="20" ColumnDefinitions="*, Auto">
-            <Label Text="Ritinformatie"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center" />
+            <Label Text="Ritinformatie" Style="{StaticResource Headline}" />
         </Grid>
 
-        <!-- Main Content -->
         <VerticalStackLayout Grid.Row="1"
                               VerticalOptions="Center"
                               HorizontalOptions="Center"
                               Spacing="20">
-            <Label x:Name="RitnummerLabel" FontSize="18" />
-            <Label Text="Aantal adressen: 50" FontSize="18" />
-            <Label Text="Aantal pakketen: 73" FontSize="18" />
-            <Label Text="Totale rit tijd: 05:00" FontSize="18" />
+            <Label x:Name="RitnummerLabel" />
+            <Label Text="Aantal adressen: 50" />
+            <Label Text="Aantal pakketen: 73" />
+            <Label Text="Totale rit tijd: 05:00" />
 
             <Button Text="Volgende"
                 BackgroundColor="#007BFF"

@@ -6,77 +6,51 @@
              BackgroundColor="White">
 
     <Grid RowDefinitions="Auto, *, Auto, Auto">
-
-        <!-- Header -->
         <Grid Grid.Row="0" Padding="20" ColumnDefinitions="*, Auto">
             <Label Text="Bezorgadres 1/30"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center" />
+                   Style="{StaticResource Headline}"/>
         </Grid>
 
-        <!-- Main Content -->
         <Grid Grid.Row="1"
               Padding="20"
               RowDefinitions="Auto, Auto, Auto, Auto, Auto, *, Auto"
               ColumnDefinitions="*">
 
-            <!-- Adres -->
             <Label Text="Adres: Grachtlaan 10, Breda, NB, 6010MG" 
-                   FontSize="18" Grid.Row="0" Grid.Column="0" />
+                   Grid.Row="0" Grid.Column="0" />
 
-            <!-- Naam -->
             <Label Text="Naam: Henk van Houdt" 
-                   FontSize="18" Grid.Row="1" Grid.Column="0" />
+                   Grid.Row="1" Grid.Column="0" />
 
-            <!-- Contact + Phone icon -->
             <Grid Grid.Row="2" Grid.Column="0" ColumnDefinitions="Auto, Auto">
                 <Label Text="Contact: 06-134573" 
-                       FontSize="18" Grid.Column="0" VerticalOptions="Center" />
+                       Grid.Column="0"/>
                 <Image Source="phone_icon.png" 
                        WidthRequest="40" HeightRequest="40" 
                        Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" 
                        x:Name="PhoneImage" />
             </Grid>
 
-            <!-- Aantal pakketten -->
             <Label Text="Aantal pakketten: 03" 
-                   FontSize="18" Grid.Row="3" Grid.Column="0" />
+                   Grid.Row="3" 
+                   Grid.Column="0" />
 
-            <!-- Afleverinstructies -->
             <Label Text="Afleverinstructies: 3e Etage, geen lift" 
-                   FontSize="18" Grid.Row="4" Grid.Column="0" />
+                   Grid.Row="4" 
+                   Grid.Column="0" />
 
-            <!-- Knoppen onderaan -->
+            
             <Grid Grid.Row="6" Grid.Column="0" ColumnDefinitions="Auto, Auto" ColumnSpacing="50">
                 <Button Text="Niet thuis"
-                        BackgroundColor="#FF3B30"
-                        TextColor="White"
-                        CornerRadius="25"
-                        WidthRequest="150"
-                        HeightRequest="50"
-                        FontAttributes="Bold"
+                        BackgroundColor="{StaticResource Rood}"
                         Grid.Column="0" />
                 <Button Text="Bezorgd"
-                        BackgroundColor="#007BFF"
-                        TextColor="White"
-                        CornerRadius="25"
-                        WidthRequest="150"
-                        HeightRequest="50"
-                        FontAttributes="Bold"
+                        BackgroundColor="{StaticResource Blauw}"
                         Grid.Column="1"
                         Clicked="OnDeliveredButtonClicked"/>
             </Grid>
 
         </Grid>
-
-        <!-- Scheidingslijn -->
-        <BoxView Grid.Row="2"
-                 Color="LightGray"
-                 HeightRequest="1"
-                 HorizontalOptions="Fill"
-                 VerticalOptions="Center" />
 
         <views:BottomNavigationBar Grid.Row="2"/>
 
