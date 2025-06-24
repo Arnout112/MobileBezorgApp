@@ -25,15 +25,12 @@
 
             <Button Text="Inloggen"
                     x:Name="LoginButton"
-                    BackgroundColor="#1C68FF"
-                    TextColor="White"
+                    BackgroundColor="{StaticResource Blauw}"
                     FontSize="18"
-                    CornerRadius="12"
-                    HeightRequest="40"
                     Clicked="LoginButton_Clicked" />
 
             <Label x:Name="ValidationLabel"
-                   TextColor="Red"
+                   TextColor="{StaticResource Rood}"
                    IsVisible="False"
                    HorizontalOptions="Center" />
 
