@@ -22,7 +22,8 @@
             <Button
                 Text="Navigatie"
                 BackgroundColor="{StaticResource Blauw}" 
-                Grid.Column="1"/>
+                Grid.Column="1"
+                Clicked="OnNavigationButtonClicked"/>
         </Grid>
 
         <views:BottomNavigationBar Grid.Row="2"/>
