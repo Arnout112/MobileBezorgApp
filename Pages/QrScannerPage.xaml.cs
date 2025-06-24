@@ -30,11 +30,4 @@ public partial class QrScannerPage : ContentPage
             await Navigation.PopAsync();
         });
     }
-
-    
-
-    private async void OnNaviCodeTapped(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new MapsPage());
-    }
 }
