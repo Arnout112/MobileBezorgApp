@@ -6,8 +6,8 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
     <Color x:Key="Wit">#FFFFFF</Color>
-    <Color x:Key="Blauw">#1C68FF</Color>
-    <Color x:Key="Rood">#EF1B1B</Color>
+    <Color x:Key="Blauw">#007BFF</Color>
+    <Color x:Key="Rood">#FF3B30</Color>
     <Color x:Key="Zwart">#000000</Color>
     <Color x:Key="Groen">#00A635</Color>
 

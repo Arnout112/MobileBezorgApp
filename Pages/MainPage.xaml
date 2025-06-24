@@ -11,9 +11,7 @@
             VerticalOptions="Center">
 
             <Label Text="Goedemorgen!"
-                   FontSize="28"
-                   TextColor="#1C68FF"
-                   HorizontalOptions="Center"
+                   Style="{StaticResource Headline}"
                    HeightRequest="250"/>
 
             <Entry x:Name="RitnummerEntry"
@@ -27,17 +25,13 @@
 
             <Button Text="Inloggen"
                     x:Name="LoginButton"
-                    BackgroundColor="#1C68FF"
-                    TextColor="White"
+                    BackgroundColor="{StaticResource Blauw}"
                     FontSize="18"
-                    CornerRadius="12"
-                    HeightRequest="48"
                     Clicked="LoginButton_Clicked" />
 
             <Label x:Name="ValidationLabel"
-                   TextColor="Red"
+                   TextColor="{StaticResource Rood}"
                    IsVisible="False"
-                   FontSize="14"
                    HorizontalOptions="Center" />
 
         </VerticalStackLayout>

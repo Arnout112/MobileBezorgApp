@@ -7,32 +7,22 @@
     <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
         <Label
             Text="Uitloggen"
-            FontSize="28"
-            FontAttributes="Bold"
-            HorizontalOptions="Center"
-            TextColor="#1C68FF"
             HeightRequest="300"
-            Style="{StaticResource TitleLabelStyle}" />
+            Style="{StaticResource Headline}" />
 
         <Label
             Text="Weet je zeker dat je wilt uitloggen?"
-            FontSize="18"
-            HorizontalOptions="Center"
-            TextColor="black"
-            HeightRequest="50"
-            Style="{StaticResource BodyLabelStyle}" />
+            HeightRequest="50" />
 
         <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
             <Button
                 Text="Annuleer"
                 BackgroundColor="{StaticResource Rood}"
-                TextColor="White"
                 Clicked="OnAnnuleerClicked"
                 WidthRequest="120"/>
             <Button
                 Text="Uitloggen"
                 BackgroundColor="{StaticResource Blauw}"
-                TextColor="White"
                 Clicked="OnUitloggenClicked"
                 WidthRequest="120"/>
         </HorizontalStackLayout>
