@@ -40,28 +40,31 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="UitloggenPage.xaml.cs">
+	  <Compile Update="Pages\UitloggenPage.xaml.cs">
 	    <DependentUpon>UitloggenPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AddressInformationPage.xaml">
+	  <MauiXaml Update="Pages\AddressInformationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="FinishedTripPage.xaml">
+	  <MauiXaml Update="Pages\FinishedTripPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="TripInformationPage.xaml">
+	  <MauiXaml Update="Pages\TripInformationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="UitloggenPage.xaml">
+	  <MauiXaml Update="Pages\UitloggenPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\BottomNavigationBar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="MapsPage.xaml.cs">
+	  <Compile Update="Pages\MapsPage.xaml.cs">
 	    <DependentUpon>MapsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>

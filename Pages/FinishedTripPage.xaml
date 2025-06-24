@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:views="clr-namespace:MobileBezorgApp.Views"
              x:Class="MobileBezorgApp.FinishedTripPage">
     <Grid RowSpacing="0" ColumnSpacing="0" Padding="0">
         <Grid.RowDefinitions>
@@ -53,29 +54,6 @@
                  HorizontalOptions="Fill"
                  VerticalOptions="End"/>
 
-        <!-- Bottom Navigation -->
-        <Grid Grid.Row="2"
-              BackgroundColor="White"
-              Padding="20,0"
-              ColumnDefinitions="*,*,*"
-              HeightRequest="60">
-            <Image Source="navigatie_pictogram.png" 
-                   WidthRequest="30" HeightRequest="30" 
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Image Grid.Column="1" Source="bezorg_pictogram.png" 
-                   WidthRequest="30" HeightRequest="30" 
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Image Grid.Column="2" Source="qr_code_pictogram.png" 
-                   WidthRequest="30" HeightRequest="30" 
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   x:Name="QrImage">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnQrCodeTapped" />
-                </Image.GestureRecognizers>
-            </Image>
-        </Grid>
+        <views:BottomNavigationBar Grid.Row="2"/>
     </Grid>
 </ContentPage>
