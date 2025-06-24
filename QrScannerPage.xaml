@@ -2,6 +2,7 @@
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MobileBezorgApp.Views"
     xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
     x:Class="MobileBezorgApp.QrScannerPage">
 
@@ -29,16 +30,7 @@
             VerticalOptions="Fill" />
 
         <!-- Bottom Navigation -->
-        <Grid Grid.Row="3"
-              BackgroundColor="White"
-              Padding="20"
-              ColumnDefinitions="*, *, *"
-              VerticalOptions="End">
-
-            <Image Source="navigatie_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" x:Name="NavigationButton"/>
-            <Image Grid.Column="1" Source="bezorg_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" x:Name="DeliverImage"/>
-            <Image Grid.Column="2" Source="qr_code_pictogram.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" />
-        </Grid>
+        <views:BottomNavigationBar Grid.Row="2"/>
 
     </Grid>
 </ContentPage>
