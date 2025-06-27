@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using MobileBezorgApp.Managers;
 using MobileBezorgApp.Models;
 
 namespace MobileBezorgApp.ViewModels
@@ -42,6 +43,13 @@ namespace MobileBezorgApp.ViewModels
         {
             get => instructions;
             set { instructions = value; OnPropertyChanged(); }
+        }
+
+        private OrderManager orderManager;
+        public OrderManager OrderManager
+        {
+            get => orderManager;
+            set { orderManager = value; OnPropertyChanged(); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

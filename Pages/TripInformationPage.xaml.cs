@@ -32,6 +32,7 @@ namespace MobileBezorgApp
             }
 
             var orderManager = new OrderManager(_orders);
+            App.CurrentOrderManager = orderManager;
             await Navigation.PushAsync(new AddressInformationPage(orderManager));
         }
     }

@@ -36,8 +36,9 @@ public partial class BottomNavigationBar : ContentView
 
     private async void OnHomeButtonTapped(object sender, EventArgs e)
     {
-        if (OrderManager != null)
-            await Navigation.PushAsync(new AddressInformationPage(OrderManager));
+        var manager = OrderManager ?? App.CurrentOrderManager;
+        if (manager != null)
+            await Navigation.PushAsync(new AddressInformationPage(manager));
         else
             await Application.Current.MainPage.DisplayAlert("Fout", "OrderManager niet beschikbaar!", "OK");
     }
