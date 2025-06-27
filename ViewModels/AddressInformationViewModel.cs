@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
-using MobileBezorgApp.Services;
+using MobileBezorgApp.Models;
 
 namespace MobileBezorgApp.ViewModels
 {
     public class AddressInformationViewModel : INotifyPropertyChanged
     {
-        private readonly ApiService _apiService = new ApiService();
-
         private string address;
         public string Address
         {
@@ -49,19 +45,18 @@ namespace MobileBezorgApp.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged([CallerMemberName] string name = null) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-        public async Task LoadData(int orderId)
+        public Task LoadData(OrderDto order)
         {
-            var order = await _apiService.GetOrderAsync(orderId);
             Address = order.Customer.Address;
             Name = order.Customer.Name;
             Contact = "06-134573";
             PackageCount = order.Products.Count;
             Instructions = "3e Etage, geen lift";
+
+            return Task.CompletedTask;
         }
     }
-
 }

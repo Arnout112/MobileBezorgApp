@@ -7,7 +7,7 @@
     <Grid RowDefinitions="Auto, *, Auto, Auto">
 
         <Grid Grid.Row="0" Padding="20" ColumnDefinitions="*, Auto">
-            <Label Text="Bezorgadres 1/30" Style="{StaticResource Headline}"/>
+            <Label x:Name="BezorgadresLabel" Style="{StaticResource Headline}" />
         </Grid>
 
         <Grid Grid.Row="1"

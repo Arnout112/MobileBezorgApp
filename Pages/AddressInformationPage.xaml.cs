@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using MobileBezorgApp.Managers;
+using MobileBezorgApp.Models;
 using MobileBezorgApp.ViewModels;
 
 namespace MobileBezorgApp
@@ -14,8 +15,8 @@ namespace MobileBezorgApp
         public AddressInformationPage(OrderManager orderManager)
         {
             InitializeComponent();
-            BindingContext = viewModel;
             this.orderManager = orderManager;
+            BindingContext = viewModel;
 
             var phoneTap = new TapGestureRecognizer();
             phoneTap.Tapped += OnPhoneTapped;
@@ -24,15 +25,31 @@ namespace MobileBezorgApp
             Loaded += AddressInformationPage_Loaded;
         }
 
-        private async void AddressInformationPage_Loaded(object sender, EventArgs e)
+        public void UpdateBezorgadresLabel()
         {
-            await LoadCurrentOrder();
+            int current = orderManager.CurrentIndex + 1;
+            int total = orderManager.TotalOrdersCount();
+
+            BezorgadresLabel.Text = $"Bezorgadres {current}/{total}";
         }
 
-        private async Task LoadCurrentOrder()
+        private async void AddressInformationPage_Loaded(object sender, EventArgs e)
         {
-            int currentOrderId = orderManager.GetCurrentOrderId();
-            await viewModel.LoadData(currentOrderId);
+            await LoadCurrentOrderAsync();
+            UpdateBezorgadresLabel();
+        }
+
+        private async Task LoadCurrentOrderAsync()
+        {
+            try
+            {
+                OrderDto currentOrder = orderManager.GetCurrentOrder();
+                await viewModel.LoadData(currentOrder);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Fout", $"Kon order niet laden: {ex.Message}", "OK");
+            }
         }
 
         private void OnPhoneTapped(object sender, EventArgs e)
@@ -52,7 +69,8 @@ namespace MobileBezorgApp
             if (orderManager.HasNextOrder())
             {
                 orderManager.MoveToNextOrder();
-                await LoadCurrentOrder();
+                await viewModel.LoadData(orderManager.GetCurrentOrder());
+                UpdateBezorgadresLabel();
             }
             else
             {

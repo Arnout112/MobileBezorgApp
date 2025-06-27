@@ -13,4 +13,9 @@ namespace MobileBezorgApp.Models
         public List<ProductDto> Products { get; set; }
     }
 
+    public class CreateOrderDto
+    {
+        public CustomerDto Customer { get; set; }
+        public List<ProductDto> Products { get; set; }
+    }
 }

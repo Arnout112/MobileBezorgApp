@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using System.Diagnostics;
+using System.Net.Http.Json;
 using MobileBezorgApp.Helpers;
 using MobileBezorgApp.Models;
 
@@ -16,10 +17,10 @@ namespace MobileBezorgApp.Services
             };
         }
 
-        // Deze private helper gebruiken we altijd
         private async Task AddApiKeyHeaderAsync()
-        {
+        {   
             var apiKey = await SecureStorageHelper.GetApiKeyAsync();
+            Debug.WriteLine("Opgehaalde API key: " + apiKey);
 
             if (string.IsNullOrWhiteSpace(apiKey))
                 throw new InvalidOperationException("API key is not set.");
@@ -28,6 +29,19 @@ namespace MobileBezorgApp.Services
                 _httpClient.DefaultRequestHeaders.Remove("ApiKey");
 
             _httpClient.DefaultRequestHeaders.Add("ApiKey", apiKey);
+        }
+
+        public async Task<OrderDto> CreateOrderAsync(object orderData)
+        {
+            await AddApiKeyHeaderAsync();
+            var response = await _httpClient.PostAsJsonAsync("api/order", orderData);
+            response.EnsureSuccessStatusCode();
+            var createdOrder = await response.Content.ReadFromJsonAsync<OrderDto>();
+
+            var startDeliveryResponse = await _httpClient.PostAsync($"api/DeliveryStates/StartDelivery?OrderId={createdOrder.Id}", null);
+            startDeliveryResponse.EnsureSuccessStatusCode();
+
+            return createdOrder;
         }
 
         public async Task<OrderDto> GetOrderAsync(int orderId)
