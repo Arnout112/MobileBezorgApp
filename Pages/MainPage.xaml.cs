@@ -19,44 +19,47 @@ namespace MobileBezorgApp
             {
                 ValidationLabel.Text = "Ritnummer is verplicht.";
                 ValidationLabel.IsVisible = true;
+                return;
             }
-            else
+
+            ValidationLabel.IsVisible = false;
+
+            string apiKey = "4b345b49-cf97-4e16-b2f9-79281a8d2b42";
+            await SecureStorageHelper.SaveApiKeyAsync(apiKey);
+            Debug.WriteLine("API key opgeslagen in SecureStorage.");
+
+            string ritnummer = RitnummerEntry.Text;
+
+            var apiService = new ApiService();
+
+            try
             {
-                ValidationLabel.IsVisible = false;
-
-                string apiKey = "4b345b49-cf97-4e16-b2f9-79281a8d2b42";
-                await SecureStorageHelper.SaveApiKeyAsync(apiKey);
-                Debug.WriteLine("API key opgeslagen in SecureStorage.");
-
-                string ritnummer = RitnummerEntry.Text;
-
-                var apiService = new ApiService();
-
-                var testOrder1 = new CreateOrderDto
+                var orderIds = await apiService.GetFirstOrderIdsAsync(10);
+                Debug.WriteLine($"Aantal orderIds: {orderIds.Count}");
+                foreach (var id in orderIds)
                 {
-                    Customer = new CustomerDto { Name = "Jan Jansen", Address = "Teststraat 1, 1234 AB Amsterdam" },
-                    Products = new List<ProductDto> { new ProductDto { Id = 1 }, new ProductDto { Id = 2 } }
-                };
+                    Debug.WriteLine($"OrderId: {id}");
+                }
 
-                var testOrder2 = new CreateOrderDto
+
+                var orders = new List<OrderDto>();
+
+                foreach (var id in orderIds)
                 {
-                    Customer = new CustomerDto { Name = "Lisa de Vries", Address = "Leliestraat 5, 5678 CD Utrecht" },
-                    Products = new List<ProductDto> { new ProductDto { Id = 3 } }
-                };
-
-                var createdOrder1 = await apiService.CreateOrderAsync(testOrder1);
-                createdOrder1.Customer = testOrder1.Customer;
-
-                var createdOrder2 = await apiService.CreateOrderAsync(testOrder2);
-                createdOrder2.Customer = testOrder2.Customer;
-
-                var orders = new List<OrderDto> { createdOrder1, createdOrder2 };
+                    var order = await apiService.GetOrderByIdAsync(id);
+                    if (order != null)
+                        orders.Add(order);
+                }
+                Debug.WriteLine($"Aantal opgehaalde orders: {orders.Count}");
 
                 await Navigation.PushAsync(new TripInformationPage(ritnummer, orders));
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Fout bij ophalen orders: {ex.Message}");
+                await DisplayAlert("Fout", "Kon orders niet laden.", "OK");
+            }
         }
-
-
 
         private async void OnStartScannerClicked(object sender, EventArgs e)
         {

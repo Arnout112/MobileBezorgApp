@@ -4,7 +4,7 @@ namespace MobileBezorgApp.Managers
 {
     public class OrderManager
     {
-        private List<OrderDto> _orders;
+        private List<OrderDto> _orders = new();
         private int _currentIndex = 0;
 
         public int CurrentIndex => _currentIndex;
@@ -34,5 +34,4 @@ namespace MobileBezorgApp.Managers
             }
         }
     }
-
 }
