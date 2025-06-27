@@ -5,9 +5,9 @@
              x:Class="MobileBezorgApp.AddressInformationPage">
 
     <Grid RowDefinitions="Auto, *, Auto, Auto">
+
         <Grid Grid.Row="0" Padding="20" ColumnDefinitions="*, Auto">
-            <Label Text="Bezorgadres 1/30"
-                   Style="{StaticResource Headline}"/>
+            <Label Text="Bezorgadres 1/30" Style="{StaticResource Headline}"/>
         </Grid>
 
         <Grid Grid.Row="1"
@@ -15,14 +15,14 @@
               RowDefinitions="Auto, Auto, Auto, Auto, Auto, *, Auto"
               ColumnDefinitions="*">
 
-            <Label Text="Adres: Grachtlaan 10, Breda, NB, 6010MG" 
+            <Label Text="{Binding Address, StringFormat='Adres: {0}'}" 
                    Grid.Row="0" Grid.Column="0" />
 
-            <Label Text="Naam: Henk van Houdt" 
+            <Label Text="{Binding Name, StringFormat='Naam: {0}'}" 
                    Grid.Row="1" Grid.Column="0" />
 
             <Grid Grid.Row="2" Grid.Column="0" ColumnDefinitions="Auto, Auto">
-                <Label Text="Contact: 06-134573" 
+                <Label Text="{Binding Contact, StringFormat='Contact: {0}'}" 
                        Grid.Column="0"/>
                 <Image Source="phone_icon.png" 
                        WidthRequest="40" HeightRequest="40" 
@@ -30,15 +30,12 @@
                        x:Name="PhoneImage" />
             </Grid>
 
-            <Label Text="Aantal pakketten: 03" 
-                   Grid.Row="3" 
-                   Grid.Column="0" />
+            <Label Text="{Binding PackageCount, StringFormat='Aantal pakketten: {0:D2}'}" 
+                   Grid.Row="3" Grid.Column="0" />
 
-            <Label Text="Afleverinstructies: 3e Etage, geen lift" 
-                   Grid.Row="4" 
-                   Grid.Column="0" />
+            <Label Text="{Binding Instructions, StringFormat='Afleverinstructies: {0}'}" 
+                   Grid.Row="4" Grid.Column="0" />
 
-            
             <Grid Grid.Row="6" Grid.Column="0" ColumnDefinitions="Auto, Auto" ColumnSpacing="50">
                 <Button Text="Niet thuis"
                         BackgroundColor="{StaticResource Rood}"
@@ -51,7 +48,7 @@
 
         </Grid>
 
-        <views:BottomNavigationBar Grid.Row="2"/>
+        <views:BottomNavigationBar Grid.Row="2" OrderManager="{Binding OrderManager}" />
 
     </Grid>
 

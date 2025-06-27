@@ -1,19 +1,33 @@
-namespace MobileBezorgApp;
+using MobileBezorgApp.Managers;
+using MobileBezorgApp.Services;
 
-public partial class TripInformationPage : ContentPage
+namespace MobileBezorgApp
 {
-    private string _ritnummer;
-
-	public TripInformationPage(string ritnummer)
-	{
-		InitializeComponent();
-        _ritnummer = ritnummer;
-
-        RitnummerLabel.Text = $"Ritnummer: {_ritnummer}";
-    }
-
-    private async void OnNextButtonClicked(object sender, EventArgs e)
+    public partial class TripInformationPage : ContentPage
     {
-        await Navigation.PushAsync(new AddressInformationPage());
+        private readonly string ritnummer;
+
+        public TripInformationPage(string ritnummer)
+        {
+            InitializeComponent();
+            this.ritnummer = ritnummer;
+
+            RitnummerLabel.Text = $"Ritnummer: {ritnummer}";
+        }
+
+        private async void OnNextButtonClicked(object sender, EventArgs e)
+        {
+            var apiService = new ApiService();
+            var orderIds = await apiService.GetAllOrderIdsAsync();
+
+            if (orderIds.Count == 0)
+            {
+                await DisplayAlert("Geen orders", "Er zijn geen orders beschikbaar.", "OK");
+                return;
+            }
+
+            var orderManager = new OrderManager(orderIds);
+            await Navigation.PushAsync(new AddressInformationPage(orderManager));
+        }
     }
 }

@@ -30,6 +30,7 @@
                 Clicked="OnNextButtonClicked" />
 
         </VerticalStackLayout>
-        <views:BottomNavigationBar Grid.Row="2"/>
+        <views:BottomNavigationBar Grid.Row="2" OrderManager="{Binding OrderManager}" />
+
     </Grid>
 </ContentPage>
