@@ -1,6 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
 using MobileBezorgApp.Managers;
 using MobileBezorgApp.Models;
 using MobileBezorgApp.ViewModels;
@@ -16,6 +13,7 @@ namespace MobileBezorgApp
         {
             InitializeComponent();
             this.orderManager = orderManager;
+            viewModel.OrderManager = orderManager;
             BindingContext = viewModel;
 
             var phoneTap = new TapGestureRecognizer();

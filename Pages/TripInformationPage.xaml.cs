@@ -24,6 +24,7 @@ namespace MobileBezorgApp
         private async void OnNextButtonClicked(object sender, EventArgs e)
         {
             var orderManager = new OrderManager(_orders);
+            App.CurrentOrderManager = orderManager;
             await Navigation.PushAsync(new AddressInformationPage(orderManager));
         }
     }
