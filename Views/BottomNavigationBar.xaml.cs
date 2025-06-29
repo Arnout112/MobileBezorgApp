@@ -1,25 +1,46 @@
+using MobileBezorgApp.Managers;
+
 namespace MobileBezorgApp.Views;
 
 public partial class BottomNavigationBar : ContentView
 {
+    public static readonly BindableProperty OrderManagerProperty =
+        BindableProperty.Create(
+            nameof(OrderManager),
+            typeof(OrderManager),
+            typeof(BottomNavigationBar),
+            null);
+
+    public OrderManager OrderManager
+    {
+        get => (OrderManager)GetValue(OrderManagerProperty);
+        set => SetValue(OrderManagerProperty, value);
+    }
+
     public BottomNavigationBar()
     {
         InitializeComponent();
 
-        // QR tap gesture
         var qrTap = new TapGestureRecognizer();
         qrTap.Tapped += OnQrCodeTapped;
         QrButton.GestureRecognizers.Add(qrTap);
 
-        // DeliverImage tap gesture
         var homeTap = new TapGestureRecognizer();
         homeTap.Tapped += OnHomeButtonTapped;
         HomeButton.GestureRecognizers.Add(homeTap);
 
-        // Navigation tap gesture
         var naviTap = new TapGestureRecognizer();
         naviTap.Tapped += OnNavigationButtonTapped;
         NavigationButton.GestureRecognizers.Add(naviTap);
+    }
+
+    private async void OnHomeButtonTapped(object sender, EventArgs e)
+    {
+        var manager = OrderManager ?? App.CurrentOrderManager;
+        if (manager != null)
+            await Navigation.PushAsync(new AddressInformationPage(manager));
+        else
+            await Application.Current.MainPage.DisplayAlert("Fout", "OrderManager niet beschikbaar!", "OK");
     }
 
     private async void OnQrCodeTapped(object sender, EventArgs e)
@@ -31,9 +52,5 @@ public partial class BottomNavigationBar : ContentView
     {
         await Navigation.PushAsync(new MapsPage());
     }
-
-    private async void OnHomeButtonTapped(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new AddressInformationPage());
-    }
 }
+

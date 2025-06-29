@@ -13,8 +13,9 @@
 
         <maps:Map x:Name="map"  
                   IsShowingUser="true"  
-                  Grid.Row="0" />  
+                  Grid.Row="0" />
 
-        <views:BottomNavigationBar Grid.Row="1" />  
+        <views:BottomNavigationBar Grid.Row="1" OrderManager="{Binding OrderManager}" />
+
     </Grid>  
 </ContentPage>

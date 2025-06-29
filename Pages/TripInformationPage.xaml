@@ -14,7 +14,7 @@
                               HorizontalOptions="Center"
                               Spacing="20">
             <Label x:Name="RitnummerLabel" />
-            <Label Text="Aantal adressen: 50" />
+            <Label x:Name="AantalAdressenLabel" Text="Aantal adressen: 0" />
             <Label Text="Aantal pakketen: 73" />
             <Label Text="Totale rit tijd: 05:00" />
 
@@ -30,6 +30,7 @@
                 Clicked="OnNextButtonClicked" />
 
         </VerticalStackLayout>
-        <views:BottomNavigationBar Grid.Row="2"/>
+        <views:BottomNavigationBar Grid.Row="2" OrderManager="{Binding OrderManager}" />
+
     </Grid>
 </ContentPage>

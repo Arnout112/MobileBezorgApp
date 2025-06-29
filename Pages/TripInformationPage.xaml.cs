@@ -1,19 +1,31 @@
-namespace MobileBezorgApp;
+﻿using System.Diagnostics;
+using MobileBezorgApp.Managers;
+using MobileBezorgApp.Models;
+using MobileBezorgApp.Services;
 
-public partial class TripInformationPage : ContentPage
+namespace MobileBezorgApp
 {
-    private string _ritnummer;
-
-	public TripInformationPage(string ritnummer)
-	{
-		InitializeComponent();
-        _ritnummer = ritnummer;
-
-        RitnummerLabel.Text = $"Ritnummer: {_ritnummer}";
-    }
-
-    private async void OnNextButtonClicked(object sender, EventArgs e)
+    public partial class TripInformationPage : ContentPage
     {
-        await Navigation.PushAsync(new AddressInformationPage());
+        private readonly string _ritnummer;
+        private List<OrderDto> _orders;
+
+        public TripInformationPage(string ritnummer, List<OrderDto> orders)
+        {
+            InitializeComponent();
+
+            _ritnummer = ritnummer;
+            _orders = orders;
+
+            RitnummerLabel.Text = $"Ritnummer: {_ritnummer}";
+            AantalAdressenLabel.Text = $"Aantal adressen: {_orders.Count}";
+        }
+
+        private async void OnNextButtonClicked(object sender, EventArgs e)
+        {
+            var orderManager = new OrderManager(_orders);
+            App.CurrentOrderManager = orderManager;
+            await Navigation.PushAsync(new AddressInformationPage(orderManager));
+        }
     }
 }

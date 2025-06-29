@@ -1,9 +1,12 @@
 ﻿using MobileBezorgApp.Helpers;
+using MobileBezorgApp.Managers; // Voeg deze regel toe
 
 namespace MobileBezorgApp
 {
     public partial class App : Application
     {
+        public static OrderManager? CurrentOrderManager { get; set; }
+
         public App()
         {
             InitializeComponent();
